@@ -19,13 +19,13 @@ static char * _trim(char *str, char *direction)
         while (isspace(*str))
             str++;
         size_t len = strlen(str);
-        memmove(start, str, len + 1);
+        memmove(start, str, len);
         start[len] = '\0';
         str = start;
     }
 
-    if (str[0] == '\0')
-        return str;
+    if (start[0] == '\0')
+        return start;
 
     if (strstr(direction, "r") != NULL) {
         str += strlen(str) - 1; 
