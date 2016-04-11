@@ -26,27 +26,27 @@ static char *_trim(char *str, const char *rem, int mode)
         return str;
 
     char *start = str;
-	size_t remLen = strlen(rem);
-	int found;
+    size_t remLen = strlen(rem);
+    int found;
     if (mode & TRIM_LEFT) {
-		while (*str) {
-			found = 0;
-			for (size_t i = 0; i < remLen; i++) {
-				if (*str == rem[i]) {
-					str++;
-					found = 1;
-					break;
-				}
-			}
-			if (!found)
-				break;
-		}
+        while (*str) {
+            found = 0;
+            for (size_t i = 0; i < remLen; i++) {
+                if (*str == rem[i]) {
+                    str++;
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found)
+                break;
+        }
 
-		if (str != start) {
-			size_t len = strlen(str);
-			memmove(start, str, len + 1);
-			str = start;
-		}
+        if (str != start) {
+            size_t len = strlen(str);
+            memmove(start, str, len + 1);
+            str = start;
+        }
     }
 
     if (str[0] == '\0')
@@ -55,18 +55,18 @@ static char *_trim(char *str, const char *rem, int mode)
     if (mode & TRIM_RIGHT) {
         str += strlen(str) - 1; 
 
-		while (*str) {
-			found = 0;
-			for (size_t i = 0; i < remLen; i++) {
-				if (*str == rem[i]) {
-					str--;
-					found = 1;
-					break;
-				}
-			}
-			if (!found)
-				break;
-		}
+        while (*str) {
+            found = 0;
+            for (size_t i = 0; i < remLen; i++) {
+                if (*str == rem[i]) {
+                    str--;
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found)
+                break;
+        }
         *(str + 1) = '\0';
     }
 
@@ -90,16 +90,16 @@ char *rtrim(char *str)
 
 char *trim_chars(char *str, const char *rem)
 {
-	return _trim(str, rem, TRIM_LEFT | TRIM_RIGHT);
+    return _trim(str, rem, TRIM_LEFT | TRIM_RIGHT);
 }
 
 char *ltrim_chars(char *str, const char *rem)
 {
-	return _trim(str, rem, TRIM_LEFT);
+    return _trim(str, rem, TRIM_LEFT);
 }
 
 char *rtrim_chars(char *str, const char *rem)
 {
-	return _trim(str, rem, TRIM_RIGHT);
+    return _trim(str, rem, TRIM_RIGHT);
 }
 
