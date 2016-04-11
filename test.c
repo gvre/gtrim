@@ -34,6 +34,7 @@ int main(void)
     char *msg6 = strdup(" ");
     msg6 = trim(msg6);
     assert(strlen(msg6) == 0);
+    free(msg6);
 
     char *msg7 = NULL;
     assert(trim(msg7) == NULL);
