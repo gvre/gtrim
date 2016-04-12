@@ -26,21 +26,9 @@ static char *_trim(char *str, const char *rem, int mode)
         return str;
 
     char *start = str;
-    size_t remLen = strlen(rem);
-    int found;
     if (mode & TRIM_LEFT) {
-        while (*str) {
-            found = 0;
-            for (size_t i = 0; i < remLen; i++) {
-                if (*str == rem[i]) {
-                    str++;
-                    found = 1;
-                    break;
-                }
-            }
-            if (!found)
-                break;
-        }
+        while (*str && strchr(rem, *str) != NULL) 
+            str++;
 
         if (str != start) {
             size_t len = strlen(str);
@@ -55,18 +43,8 @@ static char *_trim(char *str, const char *rem, int mode)
     if (mode & TRIM_RIGHT) {
         str += strlen(str) - 1; 
 
-        while (*str) {
-            found = 0;
-            for (size_t i = 0; i < remLen; i++) {
-                if (*str == rem[i]) {
-                    str--;
-                    found = 1;
-                    break;
-                }
-            }
-            if (!found)
-                break;
-        }
+        while (*str && strchr(rem, *str) != NULL) 
+            str--;
         *(str + 1) = '\0';
     }
 
